@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+ class TaskTwo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Entering how many subjects we want to evaluate
+        System.out.print("Enter the number of subjects: ");
+        int numofSub = sc.nextInt();
+        sc.nextLine(); // Consume newline character
+
+        int totalMarks = 0; // initializing total marks as 0
+        String[] subName = new String[numofSub]; // Storing subject names in a String array
+        int[] marks = new int[numofSub]; // Storing subject marks in an array
+
+        // Enter the name and marks for each subject
+        for (int i = 0; i < numofSub; i++) {
+            System.out.print("Enter the name of subject " + (i + 1) + ": ");
+            subName[i] = sc.nextLine();
+
+            // Enter marks obtained in that subject
+            System.out.print("Enter marks obtained in " + subName[i] + ": ");
+            marks[i] = sc.nextInt();
+            sc.nextLine(); // Consume newline character
+
+            totalMarks += marks[i];
+        }
+
+     
+
+        // Finding average percentage
+        float averagePercentage = (float) totalMarks / numofSub; // Cast to float for correct division
+       
+
+        // Generating grade as per averagePercentage
+        char grade;
+        if (averagePercentage >= 90) {
+            grade = 'A';
+        } else if (averagePercentage >= 75) {
+            grade = 'B';
+        } else if (averagePercentage >= 60) {
+            grade = 'C';
+        } else if (averagePercentage >= 35) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+        System.out.println("Result : ");
+        System.out.println("Total Marks: " + totalMarks);
+        System.out.println("Average Percentage: " + averagePercentage + "%");
+
+        System.out.println("Grade: " + grade);
+
+        sc.close();
+    }
+}
