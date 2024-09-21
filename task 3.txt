@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-// Interface defining ATM operations
+// interface defining ATM operations
 interface ATMInterface {
     void checkBalance();
     void deposit(double amount);
     void withdraw(double amount);
 }
 
-// Class to represent the ATM machine
+// class to represent the ATM machine
 class ATM implements ATMInterface {
     private BankAccount account;
 
@@ -81,7 +81,7 @@ class ATM implements ATMInterface {
     }
 }
 
-// Class to represent the user's bank account
+// class to represent the user's bank account
 class BankAccount {
     private double balance;
 
