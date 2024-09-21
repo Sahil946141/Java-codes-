@@ -1,0 +1,56 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class NumberGame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);  
+        Random rn = new Random();  // Random number generator
+        boolean playAgain = true;  //because if playagain is false then it will end playagain loop and the game ends
+        
+        
+        while (playAgain) {
+            int numberToGuess = rn.nextInt(200) + 1;  // logic to generate random number
+            int maxAttempts = 5;  
+            int score = 0;  // iniatizing to zero
+            boolean guessedCorrectly = false;  // At the start of the game the player has not guessed the correct number so hasGuessedCorrectly is initialized to false.
+            
+            
+            System.out.println("Welcome to the Number Game!");
+            System.out.println("I have selected a number between 1 and 200.");
+            System.out.println("You have " + maxAttempts + " attempts to guess it.");
+            System.out.println("Let's Start the game");
+
+            // using for loop
+            for (int attempts = 1; attempts <= maxAttempts && !guessedCorrectly; attempts++) {
+                System.out.print("Enter your guess: ");
+                int userGuess = sc.nextInt();  // take user's guess
+
+                if (userGuess == numberToGuess) {
+                    guessedCorrectly = true;  
+                    score = maxAttempts - attempts + 1;  //  if the user has taken less attempts to guess the number then it will give high score
+                    
+                    System.out.println("Congratulations! You've guessed the number correctly.");
+                    System.out.println("It took you " + attempts + " attempts.");
+                } else if (userGuess < numberToGuess) {
+                    System.out.println("Too low!");  
+                } else {
+                    System.out.println("Too high!");  
+                }
+            }
+
+            if (!guessedCorrectly) {
+                System.out.println("Sorry, you've used all your attempts. The correct number was " + numberToGuess + ".");
+            }
+
+            System.out.println("Your score: " + score);
+
+          //asking the player if he wants to play again
+            System.out.print("Do you want to play again? (yes/no): ");
+            String response = sc.next(); 
+            playAgain = response.equalsIgnoreCase("yes");  // check if the user wants to play again
+        }
+
+        System.out.println("Thank you for playing!");
+        
+    }
+}
